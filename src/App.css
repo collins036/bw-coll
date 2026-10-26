@@ -1,0 +1,248 @@
+/* App.css */
+
+:root {
+  --whatsapp-green: #25d366;
+  --whatsapp-dark-green: #128c7e;
+  --whatsapp-deep-green: #075e54;
+  --whatsapp-light: #e7fceF;
+  --whatsapp-white: #ffffff;
+  --text-dark: #202c33;
+  --text-muted: #667781;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family:
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  color: var(--text-dark);
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(37, 211, 102, 0.15),
+      transparent 40%
+    ),
+    linear-gradient(135deg, #f5fbf7, #e6f5ed);
+}
+
+/* Main page */
+main {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative background circles */
+main::before,
+main::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+main::before {
+  width: 320px;
+  height: 320px;
+  top: -140px;
+  right: -100px;
+  background: rgba(37, 211, 102, 0.12);
+}
+
+main::after {
+  width: 250px;
+  height: 250px;
+  bottom: -100px;
+  left: -80px;
+  background: rgba(18, 140, 126, 0.10);
+}
+
+/* Content card */
+main > h1,
+main > p,
+main > button {
+  position: relative;
+  z-index: 1;
+}
+
+main {
+  isolation: isolate;
+}
+
+main > h1,
+main > p,
+main > button {
+  max-width: 100%;
+}
+
+main > h1 {
+  font-size: clamp(2.8rem, 8vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  color: var(--whatsapp-deep-green);
+  margin-bottom: 22px;
+  animation: fadeInUp 0.7s ease both;
+}
+
+main > p {
+  font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin-bottom: 30px;
+  animation: fadeInUp 0.8s ease both;
+}
+
+/* WhatsApp join button */
+main > button {
+  min-width: 260px;
+  min-height: 68px;
+  padding: 20px 38px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(
+    135deg,
+    var(--whatsapp-green),
+    var(--whatsapp-dark-green)
+  );
+  color: var(--whatsapp-white);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  cursor: pointer;
+  box-shadow:
+    0 10px 25px rgba(18, 140, 126, 0.25),
+    0 4px 8px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+  animation: fadeInUp 0.9s ease both;
+}
+
+main > button:hover:not(:disabled) {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow:
+    0 16px 32px rgba(18, 140, 126, 0.3),
+    0 6px 12px rgba(0, 0, 0, 0.1);
+  filter: brightness(1.05);
+}
+
+main > button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+main > button:focus-visible {
+  outline: 4px solid rgba(37, 211, 102, 0.4);
+  outline-offset: 5px;
+}
+
+main > button:disabled {
+  cursor: wait;
+  opacity: 0.75;
+  box-shadow: none;
+}
+
+/* Loading and error status */
+main > p[role="status"] {
+  margin-top: 24px;
+  margin-bottom: 0;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--whatsapp-deep-green);
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  animation: fadeInUp 0.3s ease both;
+}
+
+/* Entrance animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  main {
+    padding: 28px 22px;
+  }
+
+  main > h1 {
+    font-size: clamp(2.0rem, 12vw, 3.0rem);
+    letter-spacing: -1.5px;
+    margin-bottom: 18px;
+  }
+
+  main > p {
+    font-size: 1.1rem;
+    max-width: 340px;
+    margin-bottom: 28px;
+  }
+
+  main > button {
+    width: 100%;
+    max-width: 340px;
+    min-height: 66px;
+    padding: 18px 24px;
+    font-size: 1.05rem;
+  }
+
+  main::before {
+    width: 220px;
+    height: 220px;
+    top: -90px;
+    right: -90px;
+  }
+
+  main::after {
+    width: 180px;
+    height: 180px;
+    bottom: -70px;
+    left: -70px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
